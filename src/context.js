@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 
 import reducer from './reducer'
 
@@ -43,6 +43,10 @@ const AppProvider = ({children}) => {
             payload: id 
         })
     }
+
+    useEffect(() => {
+        dispatch({ type: 'GET_TOTALS' })
+    },[state.cart])
 
     return(
         <AppContext.Provider
